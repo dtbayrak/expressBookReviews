@@ -1,7 +1,3 @@
-/**
- * Contains the skeletal implementations for the routes which an authorized user can access.
- */
-
 const express = require('express');
 const jwt = require('jsonwebtoken');
 let books = require("./booksdb.js");
@@ -9,15 +5,23 @@ const regd_users = express.Router();
 
 let users = [];
 
-const isValid = (username) => { //returns boolean
-//write code to check is the username is valid
+const isValid = (username) => { 
+  if (!username || typeof username !== 'string') return false;
+  username = username.trim();
+  /**
+   * Length between 3 and 16 characters
+   * Starts with a letter 
+   * Only letters, numbers, underscores
+   */ 
+  const regex = /^[a-zA-Z][a-zA-Z0-9_]{2,15}$/;
+  return regex.test(username);
 }
 
 const isUserAuthenticated = (username,password) => { 
   return users.find(u => u.username === username && u.password === password) ? true : false;
 }
 
-//only registered users can login
+// Only registered users can login
 regd_users.post("/login", (req,res) => {
   
   let uname = req.body.username;
@@ -84,6 +88,7 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
   }
 });
 
+// Delete review based on ISBN.
 regd_users.delete("/auth/review/:isbn", (req, res) => {
 
   let isbn = req.params.isbn;

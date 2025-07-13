@@ -1,7 +1,3 @@
-/**
- * Contains the skeletal implementations for the routes which a general user can access.
- */
-
 const express = require('express');
 let books = require("./booksdb.js");
 let isValid = require("./auth_users.js").isValid;
@@ -73,6 +69,7 @@ public_users.get('/isbn/:isbn',function (req, res) {
     });
  });
   
+
 // Get book details based on author
 function getBooksByAuthor(author) {
   return new Promise((resolve, reject) => {
@@ -106,6 +103,7 @@ public_users.get('/author/:author', async function (req, res) {
   }
 });
 
+
 // Get all books based on title
 function getBooksByTitle(title) {
   return new Promise((resolve, reject) => {
@@ -134,6 +132,7 @@ public_users.get('/title/:title', function (req, res) {
     .then(result => res.status(result.status).send(result.data))
     .catch(err => res.status(err.status).json({ error : err.error }));
 });
+
 
 //  Get book review
 public_users.get('/review/:isbn', function (req, res) {
