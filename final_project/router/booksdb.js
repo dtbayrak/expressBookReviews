@@ -1,5 +1,24 @@
+/**
+ * Contains the the preloaded book information for this application.
+ */
+/**
+ * Unicode Character “á” (U+00E1)
+ * Unicode Character “é” (U+00E9)
+ * Unicode Character “è” (U+00E8) 
+ * */
 let books = {
-      1: {"author": "Chinua Achebe","title": "Things Fall Apart", "reviews": {} },
+      1: {"author": "Chinua Achebe","title": "Things Fall Apart", "reviews": 
+            [
+                  {
+                        "uname" : "user1",
+                        "ureview" : "user1's review"
+                  },
+                  {
+                        "uname" : "user2",
+                        "ureview" : "user2's review"
+                  }
+            ]
+      },
       2: {"author": "Hans Christian Andersen","title": "Fairy tales", "reviews": {} },
       3: {"author": "Dante Alighieri","title": "The Divine Comedy", "reviews": {} },
       4: {"author": "Unknown","title": "The Epic Of Gilgamesh", "reviews": {} },
