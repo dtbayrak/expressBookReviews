@@ -16,7 +16,7 @@ public_users.post("/register", (req,res) => {
 
   if(uname && pwd) {
     if(isUserExist(uname)) {
-      return res.status(409).send("Username must be unique."); //+ "\n" + JSON.stringify(users));
+      return res.status(409).send("Username must be unique.");
     }
     else {
       users.push({"username" : uname, "password" : pwd});

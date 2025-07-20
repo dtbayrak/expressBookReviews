@@ -44,7 +44,7 @@ regd_users.post("/login", (req,res) => {
   return res.status(200).send("Login successful."); //+"\n"+JSON.stringify(req.session.authorization));
 });
 
-// Add a book review
+// Add or update book review
 regd_users.put("/auth/review/:isbn", (req, res) => {
   
   let username = req.session.authorization.username;
@@ -74,17 +74,17 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
       }
 
       if(isUpdated) {
-        res.status(200).send("Your previous review is updated.");
+        return res.status(200).send("Your previous review is updated.");
       }
       else if(isAdded) {
-        res.status(200).send("Your review is added.");
+        return res.status(200).send("Your review is added.");
       }
       else {
         return res.status(400).send("Unable to add/update review.");
       }  
   }
   else {
-    res.status(400).send("Please provide a review.");
+    return res.status(400).send("Please provide a review.");
   }
 });
 
